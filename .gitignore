@@ -220,4 +220,6 @@ __marimo__/
 # Generated files
 robot/urdf/ffw_sg2_processed.urdf
 robot/traj.npz
+robot/goal.json
+robot/goal.json.tmp
 MUJOCO_LOG.TXT
