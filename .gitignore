@@ -216,3 +216,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Generated files
+robot/urdf/ffw_sg2_processed.urdf
+robot/traj.npz
+MUJOCO_LOG.TXT

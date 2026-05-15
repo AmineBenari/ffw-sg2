@@ -1,5 +1,5 @@
 # Base: CUDA 12.4 on Ubuntu 24.04 (matches ROS 2 Jazzy)
-FROM nvidia/cuda:12.6.2-devel-ubuntu24.04
+FROM nvidia/cuda:12.8.1-devel-ubuntu24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV ROS_DISTRO=jazzy
@@ -31,7 +31,7 @@ RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key | \
 
 # PyTorch with CUDA 12.4 support
 RUN pip3 install --no-cache-dir \
-    torch torchvision --index-url https://download.pytorch.org/whl/cu126
+    torch torchvision --index-url https://download.pytorch.org/whl/cu128
 
 # MuJoCo
 RUN pip3 install --no-cache-dir mujoco
@@ -40,6 +40,9 @@ RUN pip3 install --no-cache-dir mujoco
 RUN git clone https://github.com/NVlabs/curobo.git /opt/curobo && \
     cd /opt/curobo && \
     pip3 install -e ".[dev]" --no-build-isolation
+
+# CuRobo 0.8.x requires cuda-core[cu12] for its cuda.core backend
+RUN pip3 install --no-cache-dir "cuda-core[cu12]>=0.7"
 
 # Source ROS 2 on shell startup
 RUN echo "source /opt/ros/jazzy/setup.bash" >> /root/.bashrc
