@@ -19,3 +19,15 @@ services:
       - ${XAUTHORITY:-~/.Xauthority}:/root/.Xauthority:ro
     stdin_open: true
     tty: true
+
+  planner-left:
+    extends:
+      service: ffw-sg2-planner
+    container_name: ffw_planner_left
+    command: python3 -u examples/curobo_server.py --arm left
+
+  planner-right:
+    extends:
+      service: ffw-sg2-planner
+    container_name: ffw_planner_right
+    command: python3 -u examples/curobo_server.py --arm right

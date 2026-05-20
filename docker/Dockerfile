@@ -1,4 +1,4 @@
-# Base: CUDA 12.4 on Ubuntu 24.04 (matches ROS 2 Jazzy)
+# Base: CUDA 12.8.1 on Ubuntu 24.04 (matches ROS 2 Jazzy)
 FROM nvidia/cuda:12.8.1-devel-ubuntu24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -29,7 +29,7 @@ RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key | \
     python3-colcon-common-extensions \
     && rm -rf /var/lib/apt/lists/*
 
-# PyTorch with CUDA 12.4 support
+# PyTorch with CUDA 12.8 support (matching base image)
 RUN pip3 install --no-cache-dir \
     torch torchvision --index-url https://download.pytorch.org/whl/cu128
 

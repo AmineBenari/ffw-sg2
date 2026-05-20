@@ -646,6 +646,21 @@
       <inertia ixx="0.003881243" ixy="0.0" ixz="0.0" iyy="0.000498940" iyz="0.0" izz="0.003879257"/>
     </inertial>
   </link>
+  <!-- Virtual TCP link at the fingertip plane (bottom of l2/r2 mesh AABB) -->
+  <joint name="arm_l_tcp_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 -0.215"/>
+    <parent link="arm_l_link7"/>
+    <child link="arm_l_tcp"/>
+  </joint>
+  <link name="arm_l_tcp"/>
+
+  <joint name="arm_r_tcp_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 -0.215"/>
+    <parent link="arm_r_link7"/>
+    <child link="arm_r_tcp"/>
+  </joint>
+  <link name="arm_r_tcp"/>
+
   <joint name="gripper_l_joint" type="fixed">
     <origin rpy="0 3.14159265359 3.14159265359" xyz="0 0 -0.078"/>
     <parent link="arm_l_link7"/>

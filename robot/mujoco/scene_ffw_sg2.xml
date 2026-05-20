@@ -18,6 +18,12 @@
 
   <worldbody>
     <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
-    <geom name="floor" size="0 0 0.05" type="plane" material="groundplane"/>
+    <!-- Physics floor: contact surface at z=0, invisible -->
+    <geom name="floor" size="0 0 0.05" type="plane" rgba="0 0 0 0"
+          contype="1" conaffinity="1"/>
+    <!-- Visual floor: 25 mm below physics surface — wheel mesh vertices dip
+         ~20 mm below z=0 during rotation, so 25 mm clears all z-fighting -->
+    <geom name="floor_visual" size="0 0 0.05" type="plane" material="groundplane"
+          pos="0 0 -0.025" contype="0" conaffinity="0" group="2"/>
   </worldbody>
 </mujoco>
